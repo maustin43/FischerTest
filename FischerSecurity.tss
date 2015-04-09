@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>f:\fischer\source\fischersecurity\fischerdatalayer\dataobjects\activity.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\Fischer\Source\FischerSecurity\FischerDataLayer\Classes\DataAccessHelper.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>f:\fischer\source\fischersecurity\datalayertest\form1.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\Fischer\Source\FischerSecurity\FischerDataLayer\Models\activity.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\Fischer\Source\FischerSecurity\FischerDataLayer\Models\FischerHomesModel.Context.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\Fischer\Source\FischerSecurity\DataLayerTest\App.config</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\Fischer\Source\FischerSecurity\FischerLib\Logging\LogDb.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>F:\Fischer\Source\FischerSecurity\FischerLib\app.config</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>

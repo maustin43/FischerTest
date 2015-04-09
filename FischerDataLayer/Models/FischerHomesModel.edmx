@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FischerHomesModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="activity">
+          <Key>
+            <PropertyRef Name="ActivityRecordId" />
+          </Key>
+          <Property Name="ActivityRecordId" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyRecordId" Type="ubigint" Nullable="false" />
+          <Property Name="ActivityId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="AlertType" Type="uint" />
+          <Property Name="Description" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="25" />
+          <Property Name="Duration" Type="uint" />
+          <Property Name="eMailDescription" Type="varchar" MaxLength="80" />
+          <Property Name="GLOnly" Type="bool" />
+          <Property Name="GroupRecordId" Type="ubigint" Nullable="false" />
+          <Property Name="LeadTime" Type="uint" />
+          <Property Name="POTypeRecordId" Type="ubigint" Nullable="false" />
+          <Property Name="ProductionStatusRecordId" Type="ubigint" />
+          <Property Name="PunchOut" Type="bool" />
+          <Property Name="RegionRecordId" Type="ubigint" />
+          <Property Name="ReserveUseOnly" Type="bool" />
+          <Property Name="SchedulingOnly" Type="bool" />
+          <Property Name="ShowOnCorpReports" Type="bool" />
+          <Property Name="SpecialTax" Type="bool" />
+          <Property Name="StageRecordId" Type="ubigint" Nullable="false" />
+          <Property Name="SubmitNotValidated" Type="bool" />
+          <Property Name="UserId" Type="varchar" MaxLength="45" />
+          <Property Name="LastModified" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="CompanyRecordId" />
+          </Key>
+          <Property Name="CompanyRecordId" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="companytablereference">
+          <Key>
+            <PropertyRef Name="CompanyTableReferenceRecordId" />
+          </Key>
+          <Property Name="CompanyTableReferenceRecordId" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyRecordId" Type="ubigint" Nullable="false" />
+          <Property Name="TableName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="TableCompanyRecordId" Type="ubigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="GroupRecordId" />
+          </Key>
+          <Property Name="GroupRecordId" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyRecordId" Type="ubigint" Nullable="false" />
+          <Property Name="GroupId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Substitutable" Type="bool" />
+          <Property Name="UserId" Type="varchar" MaxLength="45" />
+          <Property Name="LastModified" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="jobcostlevel">
+          <Key>
+            <PropertyRef Name="JobCostLevelRecordId" />
+          </Key>
+          <Property Name="JobCostLevelRecordId" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyRecordId" Type="ubigint" Nullable="false" />
+          <Property Name="JobCostLevelId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="potype">
+          <Key>
+            <PropertyRef Name="POTypeRecordId" />
+          </Key>
+          <Property Name="POTypeRecordId" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyRecordId" Type="ubigint" Nullable="false" />
+          <Property Name="POTypeId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="AccountRecordId" Type="ubigint" />
+          <Property Name="AllowAdjustment" Type="bool" />
+          <Property Name="Description" Type="varchar" MaxLength="45" />
+          <Property Name="EstimateHold" Type="bool" />
+          <Property Name="Inactive" Type="bool" />
+          <Property Name="JobCostLevelRecordId" Type="ubigint" Nullable="false" />
+          <Property Name="POOnly" Type="bool" />
+          <Property Name="ReleasePO" Type="bool" />
+          <Property Name="VPOOnly" Type="bool" />
+          <Property Name="UserId" Type="varchar" MaxLength="45" />
+          <Property Name="LastModified" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="stage">
+          <Key>
+            <PropertyRef Name="StageRecordId" />
+          </Key>
+          <Property Name="StageRecordId" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyRecordId" Type="ubigint" Nullable="false" />
+          <Property Name="StageId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="Activity_CompanyRecordId">
+          <End Role="company" Type="Self.company" Multiplicity="1" />
+          <End Role="activity" Type="Self.activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="activity">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Activity_GroupRecordId">
+          <End Role="group" Type="Self.group" Multiplicity="1" />
+          <End Role="activity" Type="Self.activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group">
+              <PropertyRef Name="GroupRecordId" />
+            </Principal>
+            <Dependent Role="activity">
+              <PropertyRef Name="GroupRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Activity_POTypeRecordId">
+          <End Role="potype" Type="Self.potype" Multiplicity="1" />
+          <End Role="activity" Type="Self.activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="potype">
+              <PropertyRef Name="POTypeRecordId" />
+            </Principal>
+            <Dependent Role="activity">
+              <PropertyRef Name="POTypeRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Activity_StageRecordId">
+          <End Role="stage" Type="Self.stage" Multiplicity="1" />
+          <End Role="activity" Type="Self.activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stage">
+              <PropertyRef Name="StageRecordId" />
+            </Principal>
+            <Dependent Role="activity">
+              <PropertyRef Name="StageRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CompanyTableReference1">
+          <End Role="company" Type="Self.company" Multiplicity="1" />
+          <End Role="companytablereference" Type="Self.companytablereference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="companytablereference">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Group_CompanyRecordId">
+          <End Role="company" Type="Self.company" Multiplicity="1" />
+          <End Role="group" Type="Self.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="group">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="JobCostLevel_CompanyRecordId">
+          <End Role="company" Type="Self.company" Multiplicity="1" />
+          <End Role="jobcostlevel" Type="Self.jobcostlevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="jobcostlevel">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POType_CompanyRecordId">
+          <End Role="company" Type="Self.company" Multiplicity="1" />
+          <End Role="potype" Type="Self.potype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="potype">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POType_JobCostLevel">
+          <End Role="jobcostlevel" Type="Self.jobcostlevel" Multiplicity="1" />
+          <End Role="potype" Type="Self.potype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobcostlevel">
+              <PropertyRef Name="JobCostLevelRecordId" />
+            </Principal>
+            <Dependent Role="potype">
+              <PropertyRef Name="JobCostLevelRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Stage_CompanyRecordId">
+          <End Role="company" Type="Self.company" Multiplicity="1" />
+          <End Role="stage" Type="Self.stage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="stage">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FischerHomesModelStoreContainer">
+          <EntitySet Name="activity" EntityType="Self.activity" Schema="fischerhomes" store:Type="Tables" />
+          <EntitySet Name="company" EntityType="Self.company" Schema="fischerhomes" store:Type="Tables" />
+          <EntitySet Name="companytablereference" EntityType="Self.companytablereference" Schema="fischerhomes" store:Type="Tables" />
+          <EntitySet Name="group" EntityType="Self.group" Schema="fischerhomes" store:Type="Tables" />
+          <EntitySet Name="jobcostlevel" EntityType="Self.jobcostlevel" Schema="fischerhomes" store:Type="Tables" />
+          <EntitySet Name="potype" EntityType="Self.potype" Schema="fischerhomes" store:Type="Tables" />
+          <EntitySet Name="stage" EntityType="Self.stage" Schema="fischerhomes" store:Type="Tables" />
+          <AssociationSet Name="Activity_CompanyRecordId" Association="Self.Activity_CompanyRecordId">
+            <End Role="company" EntitySet="company" />
+            <End Role="activity" EntitySet="activity" />
+          </AssociationSet>
+          <AssociationSet Name="Activity_GroupRecordId" Association="Self.Activity_GroupRecordId">
+            <End Role="group" EntitySet="group" />
+            <End Role="activity" EntitySet="activity" />
+          </AssociationSet>
+          <AssociationSet Name="Activity_POTypeRecordId" Association="Self.Activity_POTypeRecordId">
+            <End Role="potype" EntitySet="potype" />
+            <End Role="activity" EntitySet="activity" />
+          </AssociationSet>
+          <AssociationSet Name="Activity_StageRecordId" Association="Self.Activity_StageRecordId">
+            <End Role="stage" EntitySet="stage" />
+            <End Role="activity" EntitySet="activity" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyTableReference1" Association="Self.CompanyTableReference1">
+            <End Role="company" EntitySet="company" />
+            <End Role="companytablereference" EntitySet="companytablereference" />
+          </AssociationSet>
+          <AssociationSet Name="Group_CompanyRecordId" Association="Self.Group_CompanyRecordId">
+            <End Role="company" EntitySet="company" />
+            <End Role="group" EntitySet="group" />
+          </AssociationSet>
+          <AssociationSet Name="JobCostLevel_CompanyRecordId" Association="Self.JobCostLevel_CompanyRecordId">
+            <End Role="company" EntitySet="company" />
+            <End Role="jobcostlevel" EntitySet="jobcostlevel" />
+          </AssociationSet>
+          <AssociationSet Name="POType_CompanyRecordId" Association="Self.POType_CompanyRecordId">
+            <End Role="company" EntitySet="company" />
+            <End Role="potype" EntitySet="potype" />
+          </AssociationSet>
+          <AssociationSet Name="POType_JobCostLevel" Association="Self.POType_JobCostLevel">
+            <End Role="jobcostlevel" EntitySet="jobcostlevel" />
+            <End Role="potype" EntitySet="potype" />
+          </AssociationSet>
+          <AssociationSet Name="Stage_CompanyRecordId" Association="Self.Stage_CompanyRecordId">
+            <End Role="company" EntitySet="company" />
+            <End Role="stage" EntitySet="stage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FischerHomesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="fischerhomesEntities" annotation:LazyLoadingEnabled="true" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+          <EntitySet Name="activities" EntityType="FischerHomesModel.activity" />
+          <EntitySet Name="companies" EntityType="FischerHomesModel.company" />
+          <EntitySet Name="companytablereferences" EntityType="FischerHomesModel.companytablereference" />
+          <EntitySet Name="groups" EntityType="FischerHomesModel.group" />
+          <EntitySet Name="jobcostlevels" EntityType="FischerHomesModel.jobcostlevel" />
+          <EntitySet Name="potypes" EntityType="FischerHomesModel.potype" />
+          <EntitySet Name="stages" EntityType="FischerHomesModel.stage" />
+          <AssociationSet Name="Activity_CompanyRecordId" Association="FischerHomesModel.Activity_CompanyRecordId">
+            <End Role="company" EntitySet="companies" />
+            <End Role="activity" EntitySet="activities" />
+          </AssociationSet>
+          <AssociationSet Name="Activity_GroupRecordId" Association="FischerHomesModel.Activity_GroupRecordId">
+            <End Role="group" EntitySet="groups" />
+            <End Role="activity" EntitySet="activities" />
+          </AssociationSet>
+          <AssociationSet Name="Activity_POTypeRecordId" Association="FischerHomesModel.Activity_POTypeRecordId">
+            <End Role="potype" EntitySet="potypes" />
+            <End Role="activity" EntitySet="activities" />
+          </AssociationSet>
+          <AssociationSet Name="Activity_StageRecordId" Association="FischerHomesModel.Activity_StageRecordId">
+            <End Role="stage" EntitySet="stages" />
+            <End Role="activity" EntitySet="activities" />
+          </AssociationSet>
+          <AssociationSet Name="Group_CompanyRecordId" Association="FischerHomesModel.Group_CompanyRecordId">
+            <End Role="company" EntitySet="companies" />
+            <End Role="group" EntitySet="groups" />
+          </AssociationSet>
+          <AssociationSet Name="JobCostLevel_CompanyRecordId" Association="FischerHomesModel.JobCostLevel_CompanyRecordId">
+            <End Role="company" EntitySet="companies" />
+            <End Role="jobcostlevel" EntitySet="jobcostlevels" />
+          </AssociationSet>
+          <AssociationSet Name="POType_CompanyRecordId" Association="FischerHomesModel.POType_CompanyRecordId">
+            <End Role="company" EntitySet="companies" />
+            <End Role="potype" EntitySet="potypes" />
+          </AssociationSet>
+          <AssociationSet Name="Stage_CompanyRecordId" Association="FischerHomesModel.Stage_CompanyRecordId">
+            <End Role="company" EntitySet="companies" />
+            <End Role="stage" EntitySet="stages" />
+          </AssociationSet>
+          <AssociationSet Name="POType_JobCostLevel" Association="FischerHomesModel.POType_JobCostLevel">
+            <End Role="jobcostlevel" EntitySet="jobcostlevels" />
+            <End Role="potype" EntitySet="potypes" />
+          </AssociationSet>
+          <AssociationSet Name="CompanyTableReference1" Association="FischerHomesModel.CompanyTableReference1">
+            <End Role="company" EntitySet="companies" />
+            <End Role="companytablereference" EntitySet="companytablereferences" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="activity">
+          <Key>
+            <PropertyRef Name="ActivityRecordId" />
+          </Key>
+          <Property Name="ActivityRecordId" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyRecordId" Type="Decimal" Nullable="false" />
+          <Property Name="ActivityId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="AlertType" Type="Int64" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Duration" Type="Int64" />
+          <Property Name="eMailDescription" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="GLOnly" Type="Boolean" />
+          <Property Name="GroupRecordId" Type="Decimal" Nullable="false" />
+          <Property Name="LeadTime" Type="Int64" />
+          <Property Name="POTypeRecordId" Type="Decimal" Nullable="false" />
+          <Property Name="ProductionStatusRecordId" Type="Decimal" />
+          <Property Name="PunchOut" Type="Boolean" />
+          <Property Name="RegionRecordId" Type="Decimal" />
+          <Property Name="ReserveUseOnly" Type="Boolean" />
+          <Property Name="SchedulingOnly" Type="Boolean" />
+          <Property Name="ShowOnCorpReports" Type="Boolean" />
+          <Property Name="SpecialTax" Type="Boolean" />
+          <Property Name="StageRecordId" Type="Decimal" Nullable="false" />
+          <Property Name="SubmitNotValidated" Type="Boolean" />
+          <Property Name="UserId" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="company" Relationship="FischerHomesModel.Activity_CompanyRecordId" FromRole="activity" ToRole="company" />
+          <NavigationProperty Name="group" Relationship="FischerHomesModel.Activity_GroupRecordId" FromRole="activity" ToRole="group" />
+          <NavigationProperty Name="potype" Relationship="FischerHomesModel.Activity_POTypeRecordId" FromRole="activity" ToRole="potype" />
+          <NavigationProperty Name="stage" Relationship="FischerHomesModel.Activity_StageRecordId" FromRole="activity" ToRole="stage" />
+        </EntityType>
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="CompanyRecordId" />
+          </Key>
+          <Property Name="CompanyRecordId" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="activities" Relationship="FischerHomesModel.Activity_CompanyRecordId" FromRole="company" ToRole="activity" />
+          <NavigationProperty Name="groups" Relationship="FischerHomesModel.Group_CompanyRecordId" FromRole="company" ToRole="group" />
+          <NavigationProperty Name="jobcostlevels" Relationship="FischerHomesModel.JobCostLevel_CompanyRecordId" FromRole="company" ToRole="jobcostlevel" />
+          <NavigationProperty Name="potypes" Relationship="FischerHomesModel.POType_CompanyRecordId" FromRole="company" ToRole="potype" />
+          <NavigationProperty Name="stages" Relationship="FischerHomesModel.Stage_CompanyRecordId" FromRole="company" ToRole="stage" />
+          <NavigationProperty Name="companytablereferences" Relationship="FischerHomesModel.CompanyTableReference1" FromRole="company" ToRole="companytablereference" />
+        </EntityType>
+        <EntityType Name="companytablereference">
+          <Key>
+            <PropertyRef Name="CompanyTableReferenceRecordId" />
+          </Key>
+          <Property Name="CompanyTableReferenceRecordId" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyRecordId" Type="Decimal" Nullable="false" />
+          <Property Name="TableName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TableCompanyRecordId" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="company" Relationship="FischerHomesModel.CompanyTableReference1" FromRole="companytablereference" ToRole="company" />
+        </EntityType>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="GroupRecordId" />
+          </Key>
+          <Property Name="GroupRecordId" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyRecordId" Type="Decimal" Nullable="false" />
+          <Property Name="GroupId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Substitutable" Type="Boolean" />
+          <Property Name="UserId" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="activities" Relationship="FischerHomesModel.Activity_GroupRecordId" FromRole="group" ToRole="activity" />
+          <NavigationProperty Name="company" Relationship="FischerHomesModel.Group_CompanyRecordId" FromRole="group" ToRole="company" />
+        </EntityType>
+        <EntityType Name="jobcostlevel">
+          <Key>
+            <PropertyRef Name="JobCostLevelRecordId" />
+          </Key>
+          <Property Name="JobCostLevelRecordId" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyRecordId" Type="Decimal" Nullable="false" />
+          <Property Name="JobCostLevelId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="company" Relationship="FischerHomesModel.JobCostLevel_CompanyRecordId" FromRole="jobcostlevel" ToRole="company" />
+          <NavigationProperty Name="potypes" Relationship="FischerHomesModel.POType_JobCostLevel" FromRole="jobcostlevel" ToRole="potype" />
+        </EntityType>
+        <EntityType Name="potype">
+          <Key>
+            <PropertyRef Name="POTypeRecordId" />
+          </Key>
+          <Property Name="POTypeRecordId" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyRecordId" Type="Decimal" Nullable="false" />
+          <Property Name="POTypeId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="AccountRecordId" Type="Decimal" />
+          <Property Name="AllowAdjustment" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="EstimateHold" Type="Boolean" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="JobCostLevelRecordId" Type="Decimal" Nullable="false" />
+          <Property Name="POOnly" Type="Boolean" />
+          <Property Name="ReleasePO" Type="Boolean" />
+          <Property Name="VPOOnly" Type="Boolean" />
+          <Property Name="UserId" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="activities" Relationship="FischerHomesModel.Activity_POTypeRecordId" FromRole="potype" ToRole="activity" />
+          <NavigationProperty Name="company" Relationship="FischerHomesModel.POType_CompanyRecordId" FromRole="potype" ToRole="company" />
+          <NavigationProperty Name="jobcostlevel" Relationship="FischerHomesModel.POType_JobCostLevel" FromRole="potype" ToRole="jobcostlevel" />
+        </EntityType>
+        <EntityType Name="stage">
+          <Key>
+            <PropertyRef Name="StageRecordId" />
+          </Key>
+          <Property Name="StageRecordId" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyRecordId" Type="Decimal" Nullable="false" />
+          <Property Name="StageId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="activities" Relationship="FischerHomesModel.Activity_StageRecordId" FromRole="stage" ToRole="activity" />
+          <NavigationProperty Name="company" Relationship="FischerHomesModel.Stage_CompanyRecordId" FromRole="stage" ToRole="company" />
+        </EntityType>
+        <Association Name="Activity_CompanyRecordId">
+          <End Type="FischerHomesModel.company" Role="company" Multiplicity="1" />
+          <End Type="FischerHomesModel.activity" Role="activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="activity">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Activity_GroupRecordId">
+          <End Type="FischerHomesModel.group" Role="group" Multiplicity="1" />
+          <End Type="FischerHomesModel.activity" Role="activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group">
+              <PropertyRef Name="GroupRecordId" />
+            </Principal>
+            <Dependent Role="activity">
+              <PropertyRef Name="GroupRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Activity_POTypeRecordId">
+          <End Type="FischerHomesModel.potype" Role="potype" Multiplicity="1" />
+          <End Type="FischerHomesModel.activity" Role="activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="potype">
+              <PropertyRef Name="POTypeRecordId" />
+            </Principal>
+            <Dependent Role="activity">
+              <PropertyRef Name="POTypeRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Activity_StageRecordId">
+          <End Type="FischerHomesModel.stage" Role="stage" Multiplicity="1" />
+          <End Type="FischerHomesModel.activity" Role="activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="stage">
+              <PropertyRef Name="StageRecordId" />
+            </Principal>
+            <Dependent Role="activity">
+              <PropertyRef Name="StageRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Group_CompanyRecordId">
+          <End Type="FischerHomesModel.company" Role="company" Multiplicity="1" />
+          <End Type="FischerHomesModel.group" Role="group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="group">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="JobCostLevel_CompanyRecordId">
+          <End Type="FischerHomesModel.company" Role="company" Multiplicity="1" />
+          <End Type="FischerHomesModel.jobcostlevel" Role="jobcostlevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="jobcostlevel">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POType_CompanyRecordId">
+          <End Type="FischerHomesModel.company" Role="company" Multiplicity="1" />
+          <End Type="FischerHomesModel.potype" Role="potype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="potype">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Stage_CompanyRecordId">
+          <End Type="FischerHomesModel.company" Role="company" Multiplicity="1" />
+          <End Type="FischerHomesModel.stage" Role="stage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="stage">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POType_JobCostLevel">
+          <End Type="FischerHomesModel.jobcostlevel" Role="jobcostlevel" Multiplicity="1" />
+          <End Type="FischerHomesModel.potype" Role="potype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="jobcostlevel">
+              <PropertyRef Name="JobCostLevelRecordId" />
+            </Principal>
+            <Dependent Role="potype">
+              <PropertyRef Name="JobCostLevelRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CompanyTableReference1">
+          <End Type="FischerHomesModel.company" Role="company" Multiplicity="1" />
+          <End Type="FischerHomesModel.companytablereference" Role="companytablereference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="CompanyRecordId" />
+            </Principal>
+            <Dependent Role="companytablereference">
+              <PropertyRef Name="CompanyRecordId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FischerHomesModelStoreContainer" CdmEntityContainer="fischerhomesEntities">
+          <EntitySetMapping Name="activities">
+            <EntityTypeMapping TypeName="FischerHomesModel.activity">
+              <MappingFragment StoreEntitySet="activity">
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SubmitNotValidated" ColumnName="SubmitNotValidated" />
+                <ScalarProperty Name="StageRecordId" ColumnName="StageRecordId" />
+                <ScalarProperty Name="SpecialTax" ColumnName="SpecialTax" />
+                <ScalarProperty Name="ShowOnCorpReports" ColumnName="ShowOnCorpReports" />
+                <ScalarProperty Name="SchedulingOnly" ColumnName="SchedulingOnly" />
+                <ScalarProperty Name="ReserveUseOnly" ColumnName="ReserveUseOnly" />
+                <ScalarProperty Name="RegionRecordId" ColumnName="RegionRecordId" />
+                <ScalarProperty Name="PunchOut" ColumnName="PunchOut" />
+                <ScalarProperty Name="ProductionStatusRecordId" ColumnName="ProductionStatusRecordId" />
+                <ScalarProperty Name="POTypeRecordId" ColumnName="POTypeRecordId" />
+                <ScalarProperty Name="LeadTime" ColumnName="LeadTime" />
+                <ScalarProperty Name="GroupRecordId" ColumnName="GroupRecordId" />
+                <ScalarProperty Name="GLOnly" ColumnName="GLOnly" />
+                <ScalarProperty Name="eMailDescription" ColumnName="eMailDescription" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AlertType" ColumnName="AlertType" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="CompanyRecordId" ColumnName="CompanyRecordId" />
+                <ScalarProperty Name="ActivityRecordId" ColumnName="ActivityRecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="FischerHomesModel.company">
+              <MappingFragment StoreEntitySet="company">
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="CompanyRecordId" ColumnName="CompanyRecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="companytablereferences">
+            <EntityTypeMapping TypeName="FischerHomesModel.companytablereference">
+              <MappingFragment StoreEntitySet="companytablereference">
+                <ScalarProperty Name="TableCompanyRecordId" ColumnName="TableCompanyRecordId" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="CompanyRecordId" ColumnName="CompanyRecordId" />
+                <ScalarProperty Name="CompanyTableReferenceRecordId" ColumnName="CompanyTableReferenceRecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="FischerHomesModel.group">
+              <MappingFragment StoreEntitySet="group">
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Substitutable" ColumnName="Substitutable" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="CompanyRecordId" ColumnName="CompanyRecordId" />
+                <ScalarProperty Name="GroupRecordId" ColumnName="GroupRecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobcostlevels">
+            <EntityTypeMapping TypeName="FischerHomesModel.jobcostlevel">
+              <MappingFragment StoreEntitySet="jobcostlevel">
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="JobCostLevelId" ColumnName="JobCostLevelId" />
+                <ScalarProperty Name="CompanyRecordId" ColumnName="CompanyRecordId" />
+                <ScalarProperty Name="JobCostLevelRecordId" ColumnName="JobCostLevelRecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="potypes">
+            <EntityTypeMapping TypeName="FischerHomesModel.potype">
+              <MappingFragment StoreEntitySet="potype">
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VPOOnly" ColumnName="VPOOnly" />
+                <ScalarProperty Name="ReleasePO" ColumnName="ReleasePO" />
+                <ScalarProperty Name="POOnly" ColumnName="POOnly" />
+                <ScalarProperty Name="JobCostLevelRecordId" ColumnName="JobCostLevelRecordId" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="EstimateHold" ColumnName="EstimateHold" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AllowAdjustment" ColumnName="AllowAdjustment" />
+                <ScalarProperty Name="AccountRecordId" ColumnName="AccountRecordId" />
+                <ScalarProperty Name="POTypeId" ColumnName="POTypeId" />
+                <ScalarProperty Name="CompanyRecordId" ColumnName="CompanyRecordId" />
+                <ScalarProperty Name="POTypeRecordId" ColumnName="POTypeRecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stages">
+            <EntityTypeMapping TypeName="FischerHomesModel.stage">
+              <MappingFragment StoreEntitySet="stage">
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StageId" ColumnName="StageId" />
+                <ScalarProperty Name="CompanyRecordId" ColumnName="CompanyRecordId" />
+                <ScalarProperty Name="StageRecordId" ColumnName="StageRecordId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="fischerloggingModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="LogRecordId" />
+          </Key>
+          <Property Name="LogRecordId" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="varchar" MaxLength="45" />
+          <Property Name="ApplicationName" Type="varchar" MaxLength="250" />
+          <Property Name="CallerFile" Type="varchar" MaxLength="250" />
+          <Property Name="CallerMethodLine" Type="int" />
+          <Property Name="CallerMethodName" Type="varchar" MaxLength="250" />
+          <Property Name="Exception" Type="mediumtext" />
+          <Property Name="ExceptionStackTrace" Type="mediumtext" />
+          <Property Name="LogCallerFile" Type="varchar" MaxLength="250" />
+          <Property Name="LogCallerLine" Type="int" />
+          <Property Name="LogCallerMethodName" Type="varchar" MaxLength="250" />
+          <Property Name="LogDate" Type="datetime" Precision="0" />
+          <Property Name="LogServer" Type="varchar" MaxLength="250" />
+          <Property Name="LogUser" Type="varchar" MaxLength="50" />
+          <Property Name="Message" Type="mediumtext" />
+          <Property Name="MessageType" Type="int" />
+          <Property Name="ObjectType" Type="varchar" MaxLength="250" />
+          <Property Name="ObjectData" Type="mediumtext" />
+        </EntityType>
+        <EntityContainer Name="fischerloggingModelStoreContainer">
+          <EntitySet Name="log" EntityType="Self.log" Schema="fischerlogging" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="fischerloggingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="log">
+          <Key>
+            <PropertyRef Name="LogRecordId" />
+          </Key>
+          <Property Name="LogRecordId" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicationName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CallerFile" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CallerMethodLine" Type="Int32" />
+          <Property Name="CallerMethodName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Exception" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="ExceptionStackTrace" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="LogCallerFile" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LogCallerLine" Type="Int32" />
+          <Property Name="LogCallerMethodName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LogDate" Type="DateTime" />
+          <Property Name="LogServer" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LogUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="MessageType" Type="Int32" />
+          <Property Name="ObjectType" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ObjectData" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="fischerloggingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="logs" EntityType="Self.log" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="fischerloggingModelStoreContainer" CdmEntityContainer="fischerloggingEntities">
+          <EntitySetMapping Name="logs">
+            <EntityTypeMapping TypeName="fischerloggingModel.log">
+              <MappingFragment StoreEntitySet="log">
+                <ScalarProperty Name="LogRecordId" ColumnName="LogRecordId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="CallerFile" ColumnName="CallerFile" />
+                <ScalarProperty Name="CallerMethodLine" ColumnName="CallerMethodLine" />
+                <ScalarProperty Name="CallerMethodName" ColumnName="CallerMethodName" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="ExceptionStackTrace" ColumnName="ExceptionStackTrace" />
+                <ScalarProperty Name="LogCallerFile" ColumnName="LogCallerFile" />
+                <ScalarProperty Name="LogCallerLine" ColumnName="LogCallerLine" />
+                <ScalarProperty Name="LogCallerMethodName" ColumnName="LogCallerMethodName" />
+                <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+                <ScalarProperty Name="LogServer" ColumnName="LogServer" />
+                <ScalarProperty Name="LogUser" ColumnName="LogUser" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="MessageType" ColumnName="MessageType" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="ObjectData" ColumnName="ObjectData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
